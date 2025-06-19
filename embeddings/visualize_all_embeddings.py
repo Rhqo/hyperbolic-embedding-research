@@ -54,15 +54,12 @@ def main(_A: argparse.Namespace):
     # NumPy 배열로 변환
     all_embeddings_np = np.array(all_embeddings)
 
-
-    # --- 3. 3D PCA 수행 ---
     pca = PCA(n_components=3)
     embeddings_3d = pca.fit_transform(all_embeddings_np)
     
     print(f"Explained variance ratio: {pca.explained_variance_ratio_}")
     print(f"Total explained variance: {sum(pca.explained_variance_ratio_):.2f}")
 
-    # --- 4. 3D 시각화 ---
     fig = plt.figure(figsize=(_A.fig_width, _A.fig_height), dpi=120)
     ax = fig.add_subplot(111, projection='3d')
 

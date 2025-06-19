@@ -1,8 +1,10 @@
 import json
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 import matplotlib
-matplotlib.use('Agg')
+if sys.platform != 'darwin':
+    matplotlib.use('TkAgg')
 
 # JSON 파일 읽기
 file_names = ['hyperbolic_embeddings']

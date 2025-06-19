@@ -1,8 +1,11 @@
 import json
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 import matplotlib
-matplotlib.use('TkAgg')
+if sys.platform != 'darwin':
+    matplotlib.use('TkAgg')
+    
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 

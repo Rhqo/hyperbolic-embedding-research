@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 import torch
 from PIL import Image
 import os
+import sys
 import matplotlib
-matplotlib.use('Agg')
+if sys.platform != 'darwin':
+    matplotlib.use('TkAgg')
 
 from encoders import Encoder
 
@@ -32,5 +34,6 @@ plt.title('Dimension-wise Embeddings Line Chart')
 plt.xlabel('Dimension Index')
 plt.ylabel('Value')
 plt.legend()
-plt.savefig('compare_img_chart.png')
+plt.show()
+# plt.savefig('compare_img_chart.png')
 plt.close()

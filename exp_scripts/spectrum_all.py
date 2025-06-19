@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 import torch
 from PIL import Image
 import os
+import sys
 import matplotlib
-matplotlib.use('TkAgg')
+if sys.platform != 'darwin':
+    matplotlib.use('TkAgg')
 
 from encoders import Encoder
 

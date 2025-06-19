@@ -1,8 +1,10 @@
 import json
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 import matplotlib
-matplotlib.use('Agg')  # Use a non-interactive backend for saving plots
+if sys.platform != 'darwin':
+    matplotlib.use('TkAgg')
 
 dress_0 = 2
 dress_1 = 3
@@ -22,5 +24,6 @@ plt.title('Dimension-wise Embeddings Line Chart')
 plt.xlabel('Dimension Index')
 plt.ylabel('Value')
 plt.legend()
-plt.savefig('compare_img_json_chart.png')
+plt.show()
+# plt.savefig('compare_img_json_chart.png')
 plt.close()
