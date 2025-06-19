@@ -6,30 +6,15 @@ from mpl_toolkits.mplot3d import Axes3D
 from sklearn.decomposition import PCA
 
 def main(_A: argparse.Namespace):
-    """
-    이미지 및 텍스트 임베딩을 로드하고 3D PCA로 시각화합니다.
-    """
-    # --- 1. 데이터 로드 ---
-    print("Step 1: Loading embedding files...")
-    try:
-        with open(_A.image_embeddings_path, 'r') as f:
-            image_embeddings_dict = json.load(f)
-        print(f"Successfully loaded {len(image_embeddings_dict)} image embeddings.")
-    except FileNotFoundError:
-        print(f"Error: Image embedding file not found at '{_A.image_embeddings_path}'")
-        return
 
-    try:
-        with open(_A.text_embeddings_path, 'r') as f:
-            text_embeddings_dict = json.load(f)
-        print(f"Successfully loaded {len(text_embeddings_dict)} text embeddings.")
-    except FileNotFoundError:
-        print(f"Error: Text embedding file not found at '{_A.text_embeddings_path}'")
-        return
+    with open(_A.image_embeddings_path, 'r') as f:
+        image_embeddings_dict = json.load(f)
 
-    # --- 2. PCA를 위한 데이터 준비 ---
-    print("Step 2: Preparing data for PCA...")
-    
+
+    with open(_A.text_embeddings_path, 'r') as f:
+        text_embeddings_dict = json.load(f)
+
+
     all_embeddings = []
     all_labels = []
     all_types = []
@@ -68,11 +53,9 @@ def main(_A: argparse.Namespace):
     
     # NumPy 배열로 변환
     all_embeddings_np = np.array(all_embeddings)
-    print(f"Successfully created NumPy array with shape: {all_embeddings_np.shape}")
 
 
     # --- 3. 3D PCA 수행 ---
-    print("Step 3: Performing 3D PCA...")
     pca = PCA(n_components=3)
     embeddings_3d = pca.fit_transform(all_embeddings_np)
     
@@ -80,8 +63,6 @@ def main(_A: argparse.Namespace):
     print(f"Total explained variance: {sum(pca.explained_variance_ratio_):.2f}")
 
     # --- 4. 3D 시각화 ---
-    print("Step 4: Generating 3D plot... (You can rotate the plot with your mouse)")
-    
     fig = plt.figure(figsize=(_A.fig_width, _A.fig_height), dpi=120)
     ax = fig.add_subplot(111, projection='3d')
 
