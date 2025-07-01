@@ -57,7 +57,7 @@ final_data = np.vstack(all_embeddings_list)
 vmin = final_data.min()
 vmax = final_data.max()
 
-plt.figure(figsize=(20, 10)) # figsize는 데이터 개수에 맞게 조절
+plt.figure(figsize=(10, 6)) # figsize는 데이터 개수에 맞게 조절
 plt.imshow(
     final_data,
     aspect='auto',

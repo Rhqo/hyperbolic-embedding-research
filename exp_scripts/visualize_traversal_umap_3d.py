@@ -156,7 +156,7 @@ def main(_A: argparse.Namespace):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Visualize image-to-text traversal using 3D UMAP.")
     # 파일 경로 설정
-    parser.add_argument("--image-path", default='./assets/green_dress.jpeg', help="Path to an image for performing traversal.")
+    parser.add_argument("--image-path", default='./datasets/fashion200k/casual_and_day_dresses/51727804/51727804_0.jpeg', help="Path to an image for performing traversal.")
     parser.add_argument("--text-embeddings-path", default='./embeddings/text_embeddings.json', help="Path to the pre-generated text embeddings JSON file.")
     parser.add_argument("--checkpoint-path", default='./checkpoints/meru_vit_b.pth', help="Path to the MERU model checkpoint.")
     parser.add_argument("--train-config", default='./configs/train_meru_vit_b.py', help="Path to the model's training config file.")
@@ -165,13 +165,13 @@ if __name__ == "__main__":
     parser.add_argument("--steps", type=int, default=50, help="Number of interpolation steps for traversal.")
     
     # 시각화 옵션
-    parser.add_argument("--fig-width", type=int, default=12, help="Width of the output plot figure.")
-    parser.add_argument("--fig-height", type=int, default=12, help="Height of the output plot figure.")
+    parser.add_argument("--fig-width", type=int, default=10, help="Width of the output plot figure.")
+    parser.add_argument("--fig-height", type=int, default=6, help="Height of the output plot figure.")
     
     # UMAP 파라미터
-    parser.add_argument("--n_neighbors", type=int, default=15, help="UMAP: Controls how UMAP balances local versus global structure in the data.")
+    parser.add_argument("--n_neighbors", type=int, default=1000, help="UMAP: Controls how UMAP balances local versus global structure in the data.")
     parser.add_argument("--min_dist", type=float, default=0.1, help="UMAP: Controls how tightly UMAP is allowed to pack points together.")
-    parser.add_argument("--metric", type=str, default='cosine', help="UMAP: The metric to use for distance computation (e.g., 'cosine', 'euclidean').")
+    parser.add_argument("--metric", type=str, default='euclidean', help="UMAP: The metric to use for distance computation (e.g., 'cosine', 'euclidean').")
 
     _A = parser.parse_args()
     main(_A)
