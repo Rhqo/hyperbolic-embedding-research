@@ -3,6 +3,7 @@
 This repository focuses on hyperbolic embeddings for vision-language models, featuring MERU, a framework for training and evaluating models like CLIP using Vision Transformers (ViT). It includes tools for training, evaluation (zero-shot classification, retrieval), and experimental scripts for analyzing embedding spaces.
 
 `exp_scripts/`: Contains Python scripts for running various experiments.
+
 `src/`: Core implementation of MERU and related utilities.
 
 To run 'custom' experiment scripts, use the following command:
